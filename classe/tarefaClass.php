@@ -10,39 +10,40 @@
             } 
             catch (PDOException $e) 
             {
-              echo "<b>Erro com Banco de Dados :</b>".$e->getMessage(); 
+              echo "Erro com Banco de Dados :".$e->getMessage(); 
               exit(); 
             }
             catch(Exception $e)
             {
-                echo "<b>Erro Generico:</b>".$e->getMessage();  
+                echo "Erro Generico:".$e->getMessage();  
             }
          
         }
 
-        public function cadastrarTarefa($title, $subjects)
+        public function cadastrarTarefa($title, $subjects,$data)
         {   
-            $result = $this->conn->prepare("INSERT into tarefas(title, subjects) values (:t, :s) ");
+           
+            $result = $this->conn->prepare("INSERT into tarefas(title, subjects,data) values (:t, :s,:d) ");
             $result->bindValue(":t", $title);
             $result->bindValue(":s", $subjects);
+             $result->bindValue(":d", $data);
             $result->execute();
             return true;
-            
-            
+      
         }
 
         public function buscarDados()
         {
             try 
             {
-                $result = $this->conn->query("SELECT * From tarefas order by id DESC");
+                $result = $this->conn->query("SELECT * From tarefas order by data DESC");
                 $mostra = $result->fetchAll(PDO::FETCH_ASSOC);
                 return $mostra;
                    
             }
-            catch (\Throwable $th)
+            catch (Exception $e)
             {
-                echo "<b>Tarefa nao encontrada</b>".$th->getMessage();
+                echo "Erro Generico:".$e->getMessage(); 
             }
         }
 
@@ -58,24 +59,25 @@
                 
             }
 
-        public function atualizarTarefaNoBanco($id, $title, $subjects)
+        public function atualizarTarefaNoBanco($id, $title, $subjects,$data)
         {    
             try 
             {
                 $result = $this->conn->prepare("UPDATE tarefas SET 
-                     title = :t, subjects = :s  WHERE id = :id");
+                     title = :t, subjects = :s, data = :d  WHERE id = :id");
 
 
                 $result->bindValue(":id", $id); 
                 $result->bindValue(":t", $title);
                 $result->bindValue(":s", $subjects);
+                $result->bindValue(":d", $data);
                 $result->execute();
                 return true;
 
             } 
              catch (\Throwable $th)
             {
-                echo "<b>Nao foi atualizado</b>".$th->getMessage();
+                echo "nao foi atualizado".$th->getMessage();
             }
                
               
@@ -93,7 +95,7 @@
             } 
             catch (\Throwable $th)
             {
-                echo "<b>Nao foi excluido</b>:".$th->getMessage();
+                echo "Nao foi excluido:".$th->getMessage();
             }
         }
       

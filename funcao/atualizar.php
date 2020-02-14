@@ -10,9 +10,11 @@
 
 	 		$subjects = addslashes($_POST['subjects']);
 
-	 		if (!empty($title) && !empty($subjects) ) 
+	 		$data = addslashes($_POST['data']);
+
+	 		if (!empty($title) && !empty($subjects) && !empty($data)) 
 	 		{
-	 			$p->atualizarTarefaNoBanco($id_update, $title, $subjects);
+	 			$p->atualizarTarefaNoBanco($id_update, $title, $subjects, $data);
 
 	 			echo "<script>alert('tarefa alterada com sucesso!');
        				window.location='tarefas.php';</script>";

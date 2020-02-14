@@ -1,15 +1,9 @@
 <?php  require_once "classe/tarefaClass.php"; 
-$p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
+$p = new Tarefa("crud_todo","localhost","root","lourenco");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/cor.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	
-</head>
+<?php
+    include_once 'layout/hf/header.php';
+?>
 <body>
 
 	<nav class="navbar navbar-dark bg-dark"> 
@@ -36,7 +30,14 @@ $p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
 			<div class="form-group">
 				<input type="text" name="subjects" id="subjects" placeholder="Descreva o assunto" class="form-control">
 			</div>
-			<button type="submit" name="enviar_assunto" id="button" class="btn btn-dark btn-block" value="Add new" >Add new</button>
+
+			<div class="form-group">
+				<input type="date" name="data" id="data" class="form-control">
+			</div>
+			
+			<button type="submit" name="enviar_assunto" id="button" 
+					class="btn btn-dark btn-block" value="Add new" onclick="appendText()" >Add new
+			</button>
 		
 		</form>
 
@@ -46,20 +47,13 @@ $p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
 		<a type="submit" href="tarefas.php" class=" btn btn btn-outline-dark btn-block">
 		Task list</a>
 	</div>
-
-	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 	<script type="text/javascript">
-	$(document).ready(function(){
+		$(document).ready(function(){
 		$("button").click(function(){
 		$("p").append("<p class='alert alert-success justify-content-center ' role='alert'>Tarefa Incluida</p>");
-		});
-
-		});
+		});   });
 	</script>
 </body>
-</html>
+<?php
+include_once 'layout/hf/footer.php';
+?>

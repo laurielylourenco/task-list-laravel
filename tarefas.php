@@ -1,15 +1,9 @@
 <?php  require_once "classe/tarefaClass.php"; 
-$p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
+$p = new Tarefa("crud_todo","localhost","root","lourenco");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>List</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/cor.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-</head>
+<?php
+    include_once 'layout/hf/header.php';
+?>
 <body>
 
     <nav class="navbar navbar-dark bg-dark"> 
@@ -17,11 +11,9 @@ $p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
             <a class="navbar-brand" href="index.php">TO DO</a>
         </div>
     </nav> 
-
-
    <br>
    <?php require 'funcao/atualizar.php'; ?>
-    <div  id ="listar" >
+    <div class=""  id="listar">
     <form  method="POST">
 
     <?php
@@ -30,23 +22,27 @@ $p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
         {
             for ($i=0; $i < count($dados); $i++)
             { 
-                echo "<div class='card border border-secondary text-justify col-md-4 col-sm-4 col-lg-3 ' >";
-                echo "<div class='card-body'>";
-                     foreach ($dados[$i] as $key => $value)
+                echo "<div class='card border-secondary text-justify col-sm-4'>"; 
+            echo "<div class='card-body'>";
+             foreach ($dados[$i] as $key => $value)
+                {
+                    if($key != "id")
+                    {
+                        if ($key == "title")
                         {
-                            if($key != "id")
-                            {
-                                echo "<p>".$value."</p>";
-                            }
-                          
+                            echo '<h4 class="card-title">'.$value.' </h4>';
                         }
+                        else
+                        {
+                             echo "<p class='card-text'>".$value."</p>";
+                        }    
+                    }                
+                }
     ?>
-                <h4 class="card-title"></h4>
-                
                 <a href="todo_update.php?id_up=<?php echo $dados[$i]["id"];?>" class="btn btn-primary card-link">Atualizar</a>
 
                 <a href="tarefas.php?id=<?php echo $dados[$i]["id"];?>" class=" btn btn-danger card-link">Excluir</a>
-                </div>
+            </div>
 
              <?php
                 echo " </div>";
@@ -71,8 +67,6 @@ $p = new Tarefa("crud_todo","localhost","root","");//alterar para ultizar
     include 'funcao/id_update.php';
     include 'funcao/excluir.php';
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-</html>
+<?php
+include_once 'layout/hf/footer.php';
+?>
