@@ -9,5 +9,5 @@
 * Framework Materialize.
 
 <h2> Próxima atualização</h2>
-- [ ]a funçao editar com ajax através de um modal.
-
+- [ ] funçao editar com ajax através de um modal.
+- [ ] validar input
