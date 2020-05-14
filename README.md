@@ -1,6 +1,6 @@
 # to_do
 
-<p>Projeto to-do tem intenção de aprender e melhorar sobre o php</p>
+<p>Projeto to-do-> aprender framework php</p>
 
 <h2>O que esta sendo usado projeto?</h2>
 
