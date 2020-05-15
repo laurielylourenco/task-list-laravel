@@ -10,4 +10,3 @@
 
 <h2> Próxima atualização</h2>
 - [ ] funçao editar com ajax através de um modal.
-- [ ] validar input
