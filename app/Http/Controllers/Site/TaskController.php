@@ -14,12 +14,15 @@ class TaskController extends Controller
   public function salvar(Request $req)
   {
     $dado = $req->all();
-    	if (isset($dado)) 
-      {
+    $this->validate($req, [
+      'titulo' => 'required',
+      'texto' => 'required',
+    ]);
+      if($dado){
         Todo::create($dado);
         $dado['message'] = '<h5 class="green darken-1">Nova tarefa!</h5>';
         return response()->json($dado);    
-      }    
+      }     
   }
 
   public function listar()
