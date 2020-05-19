@@ -1,17 +1,18 @@
 # to_do
 
-<p>Projeto to-do-> aprender framework php</p>
-
-<h2>O que esta sendo usado projeto?</h2>
+# Projeto to-do-> aprender framework php
+---
+## O que esta sendo usado projeto?
 
 * Framework Laravel.
 * Ajax para requisições
 * Framework Materialize.
+---
+## Próxima atualização
+- [ ] editar usando modal com ajax.
 
-<h2> Próxima atualização</h2>
-- [ ] funçao editar com ajax através de um modal.
-
-<h2>Para testar o projeto  ? </h2>
+---
+## Para testar o projeto  ?
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
