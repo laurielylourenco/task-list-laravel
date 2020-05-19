@@ -1,6 +1,6 @@
 # to_do
 
-# Projeto to-do-> aprender framework php
+# Projeto to-do -> aprendendo framework php
 ---
 ## O que esta sendo usado projeto?
 
