@@ -11,41 +11,35 @@ class TaskController extends Controller
   {
     return view('todo.lista.index');
   }
+
   public function salvar(Request $req)
   {
-    $dado = $req->all();
-    $this->validate($req, [
-      'titulo' => 'required',
-      'texto' => 'required',
-    ]);
-      if($dado){
-        Todo::create($dado);
-        $dado['message'] = '<h5 class="green darken-1">Nova tarefa!</h5>';
-        return response()->json($dado);    
-      }     
+      $dado = $req->all();
+      $this->validate($req, [
+        'titulo' => 'required',
+        'texto' => 'required',
+      ]);
+        if($dado){
+          Todo::create($dado);
+          $dado['message'] = '<h5 class="green darken-1">Nova tarefa!</h5>';
+          return response()->json($dado);    
+        }    
   }
 
   public function listar()
   {
      $list = Todo::all();
-
       return view('todo.lista.listagem',compact('list'));
   }
 
-  public function editar($id)
-  {
-    $edit = Todo::find($id);
-    return view('todo.lista.editar', compact('edit'));
-  }
-
+  
   public function atualizar(Request $req, $id)
   {
-     $dado = $req->all();
-    
-      Todo::find($id)->update($dado);
-
-      return redirect()->route('todo.listar');
-  
+      $dado = Todo::find ($req->id);
+      $dado->titulo = $req->titulo;
+      $dado->texto = $req->texto;
+      $dado->save();
+      return response()->json($dado);  
   }
 
   public function deletar($id)
@@ -53,9 +47,6 @@ class TaskController extends Controller
     $dado = Todo::find($id);
     $dado->delete();
      return response()->json($dado);
-    //Todo::find($id)->delete();
-    //return redirect()->route('todo.listar');
-   
   }
 
 }

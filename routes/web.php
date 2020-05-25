@@ -1,7 +1,5 @@
 <?php
 
-
-//Route::get('/',['as'=>'site.home','uses'=>'Site\HomeController@index']);
 Route::get('/',['as'=>'todo.index',
   	'uses'=>'Site\TaskController@index']);
 
