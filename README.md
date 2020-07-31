@@ -8,10 +8,6 @@
 * Ajax para requisições
 * Framework Materialize.
 ---
-## Próxima atualização
-- [ ] editar usando modal com ajax.
-
----
 ## Para testar o projeto  ?
 
     DB_CONNECTION=mysql
