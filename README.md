@@ -1,11 +1,11 @@
-# to_do
+# task list
 
-# Projeto to-do -> aprendendo framework php
----
+
+Primeiro projeto com laravel um CRUD de tarefas.
 ## O que esta sendo usado projeto?
 
 * Framework Laravel.
-* Ajax para requisições
+* Ajax para requisições.
 * Framework Materialize.
 ---
 ## Para testar o projeto  ?
